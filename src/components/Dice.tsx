@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   IonButton,
   IonCard,
@@ -19,9 +19,14 @@ const useDiceRoller = (initialValue: number | null = null) => {
     initialValue,
     initialValue,
   ]);
-  const [message, setMessage] = useState<string>('Please pass the dice to the next person');
+  const [message, setMessage] = useState<string>(
+    'Please pass the dice to the next person',
+  );
+  const [spinCount, setSpinCount] = useState<number>(0); // State for counting spins
+  const [totals, setTotals] = useState<Array<number>>([]); // State for storing totals of each spin
 
   const spin = () => {
+    setSpinCount(spinCount + 1);
     const newValues = values.map(() => rollDice());
     setValues(newValues);
 
@@ -49,14 +54,16 @@ const useDiceRoller = (initialValue: number | null = null) => {
     } else {
       setMessage('Please pass the dice to the next person');
     }
+
+    const total = newValues.reduce((acc, value) => acc + (value ?? 0), 0);
+    setTotals([...totals, total]); // Add the new total to the totals array
   };
 
-  const total = values.reduce((acc: number, value) => acc + (value ?? 0), 0);
-  return { values, spin, total, message };
+  return { values, spin, message, spinCount, totals };
 };
 
 const Dice = () => {
-  const { values, spin, total, message } = useDiceRoller();
+  const { values, spin, message, spinCount, totals } = useDiceRoller();
   return (
     <div>
       <IonCard>
@@ -77,7 +84,10 @@ const Dice = () => {
         </IonCardHeader>
         <IonCardContent>
           <div>{message}</div>
-          <div>Please move forward by {total} spaces</div>
+          <div>
+            Please move forward by {totals[totals.length - 1] || 0} spaces
+          </div>{' '}
+          {/* Display the last total */}
         </IonCardContent>
       </IonCard>
       <IonCard>
@@ -91,6 +101,10 @@ const Dice = () => {
           >
             Spin The Dice <IonIcon icon={arrowForwardOutline}></IonIcon>
           </IonButton>
+          <div>Spin Count: {spinCount}</div>{' '}
+          {/* Display the number of times spin was called */}
+          <div>Totals: {totals.map((total, index) => `{${index + 1}}${total}`).join(', ')}</div>
+          {/* Display the totals array */}
         </IonCardContent>
       </IonCard>
     </div>
