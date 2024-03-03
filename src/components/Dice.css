@@ -1,0 +1,9 @@
+.border-temp {
+  border: 2px solid red;
+}
+.dice-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
