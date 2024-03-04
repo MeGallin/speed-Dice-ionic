@@ -2,10 +2,9 @@ import Dice from '../components/Dice';
 
 const homeView = () => {
   return (
-    <>
-      homeView HERE
+    <main>
       <Dice />
-    </>
+    </main>
   );
 };
 
