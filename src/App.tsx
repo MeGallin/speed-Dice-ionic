@@ -19,7 +19,7 @@ import '@ionic/react/css/display.css';
 import { setupIonicReact } from '@ionic/react';
 
 setupIonicReact();
-
+import './App.css';
 function App() {
   return (
     <div

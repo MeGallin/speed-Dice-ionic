@@ -1,0 +1,25 @@
+:root {
+  --header-height: 55px; /* Adjust the height as needed */
+  --footer-height: 50px; /* Adjust the height as needed */
+  --main-height: calc(100vh - var(--header-height) - var(--footer-height));
+}
+
+header {
+  height: var(--header-height); /* Use the header height variable */
+}
+
+main {
+  background-color: lightblue;
+  padding: 2px; /* Adjust based on your design */
+  height: var(--main-height); /* Use the calculated main height */
+  overflow-y: auto;
+  display: flex; /* Enable Flexbox */
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+}
+
+footer {
+  background-color: yellow;
+  height: var(--footer-height); /* Use the footer height variable */
+}
