@@ -10,10 +10,12 @@ import {
 } from '@ionic/react';
 import './Dice.css';
 import { arrowForwardOutline } from 'ionicons/icons';
+import useFromNow from '../hooks/useFromNow';
 
 useDiceRoller;
 
 const Dice = () => {
+  const timeFromNow = useFromNow();
   const { values, spin, message, spinCount, totals } = useDiceRoller();
   // Define an array of animation classes
   const animations = [
@@ -42,7 +44,7 @@ const Dice = () => {
               </span>
             ))}
           </div>
-          <IonCardSubtitle>Up to 6 times quicker</IonCardSubtitle>
+          <IonCardSubtitle>Up to 6 times quicker {timeFromNow}</IonCardSubtitle>
         </IonCardHeader>
         <IonCardContent>
           <div>{message}</div>
