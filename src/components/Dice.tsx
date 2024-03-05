@@ -7,6 +7,7 @@ import {
   IonCardSubtitle,
   IonIcon,
   IonImg,
+  IonAlert,
 } from '@ionic/react';
 import './Dice.css';
 import { arrowForwardOutline } from 'ionicons/icons';
@@ -70,15 +71,18 @@ const Dice = () => {
         </IonCardContent>
       </IonCard>
 
-      <IonCard>
-        <IonCardContent>
-          <div>
-            Totals:{' '}
-            {totals.map((total, index) => `{${index + 1}}${total}`).join(', ')}
-          </div>
-          {/* Display the totals array */}
-        </IonCardContent>
-      </IonCard>
+      <IonButton id="present-alert">Show Spin Stats</IonButton>
+      <IonAlert
+        trigger="present-alert"
+        header="Stats"
+        subHeader="All the spins for this session"
+        message={totals
+          .map((total, index) => `S{${index + 1}}=${total}`)
+          .join(', ')}
+        buttons={['Close']}
+      ></IonAlert>
+
+      
     </div>
   );
 };
