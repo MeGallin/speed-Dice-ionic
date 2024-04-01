@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 const rollDice = () => Math.floor(Math.random() * 6) + 1;
 
@@ -37,9 +36,9 @@ export const useDiceRoller = (initialValue: number | null = null) => {
     }
 
     if (foundTriplicate) {
-      setMessage('Triple, please move to home and spin again');
+      setMessage('Triple !!!, Please move to home and spin again.');
     } else if (foundDuplicate) {
-      setMessage('Double, please spin again');
+      setMessage('Double !!, Please spin again.');
     } else {
       setMessage('Please pass the dice to the next person');
     }

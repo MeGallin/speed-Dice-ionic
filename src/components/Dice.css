@@ -1,9 +1,24 @@
 .border-temp {
   border: 2px solid red;
 }
+.wrapper {
+  border: transparent solid 1px;
+  width: 100%;
+}
 .dice-wrapper {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
+}
+
+Ion-Card {
+  text-align: center;
+}
+Ion-text h1 {
+  font-size: 0.8em;
+}
+Ion-text h1 span {
+  color: yellowgreen;
+  font-size: 1.2em;
 }
