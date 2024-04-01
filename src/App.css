@@ -9,7 +9,7 @@ header {
 }
 
 main {
-  background-color: lightblue;
+  background-color: rgba(51, 51, 51, 1);
   padding: 2px; /* Adjust based on your design */
   height: var(--main-height); /* Use the calculated main height */
   overflow-y: auto;
