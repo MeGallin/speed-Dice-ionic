@@ -29,7 +29,7 @@ const Dice = () => {
     'rotateIn',
     'bounceInRight',
     'fadeInLeftBig',
-    'bounceInUp',
+    'bounceInLeft',
     'fadeIn',
   ];
 
@@ -45,7 +45,7 @@ const Dice = () => {
                   trigger="present-alert"
                   header="Stats"
                   subHeader="All the spins for this session"
-                  message={totals
+                  message={values
                     .map((total, index) => `S{${index + 1}}=${total}`)
                     .join(', ')}
                   buttons={['Close']}
