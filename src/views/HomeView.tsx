@@ -1,11 +1,5 @@
-import Dice from '../components/Dice';
-
 const homeView = () => {
-  return (
-    <main>
-      <Dice />
-    </main>
-  );
+  return <main>HOME VIEW</main>;
 };
 
 export default homeView;

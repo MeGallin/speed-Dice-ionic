@@ -9,6 +9,8 @@ import {
   IonToolbar,
 } from '@ionic/react';
 
+import { Link } from '@tanstack/react-router';
+
 const MenuComponent = () => {
   return (
     <>
@@ -19,7 +21,14 @@ const MenuComponent = () => {
           </IonToolbar>
         </IonHeader>
         <IonContent className="ion-padding">
-          This is the menu content.
+          <div>
+            <Link to="/" className="">
+              Home
+            </Link>{' '}
+            <Link to="/dice" className="">
+              Dice
+            </Link>
+          </div>
         </IonContent>
       </IonMenu>
       <IonPage id="main-content">
