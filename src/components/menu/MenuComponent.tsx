@@ -10,23 +10,25 @@ import {
 } from '@ionic/react';
 
 import { Link } from '@tanstack/react-router';
+import useFromNow from '../../hooks/useFromNow';
 
 const MenuComponent = () => {
+  const timeFromNow = useFromNow();
   return (
     <>
       <IonMenu contentId="main-content">
         <IonHeader>
           <IonToolbar>
-            <IonTitle>Menu Content</IonTitle>
+            <IonTitle>Menu Content </IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonContent className="ion-padding">
           <div>
-            <Link to="/" className="">
+            <Link to="/" activeProps={{ className: 'active' }}>
               Home
             </Link>{' '}
-            <Link to="/dice" className="">
-              Dice
+            <Link to="/dice" activeProps={{ className: 'active' }}>
+              Dice header
             </Link>
           </div>
         </IonContent>
@@ -37,7 +39,7 @@ const MenuComponent = () => {
             <IonButtons slot="start">
               <IonMenuButton></IonMenuButton>
             </IonButtons>
-            <IonTitle>Optional logo</IonTitle>
+            <IonTitle>Optional logo{timeFromNow}</IonTitle>
           </IonToolbar>
         </IonHeader>
       </IonPage>

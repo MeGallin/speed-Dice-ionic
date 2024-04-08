@@ -19,6 +19,14 @@ main {
   align-items: center; /* Center content horizontally */
 }
 
+.active {
+  font-weight: bold;
+}
+
+.border-temp {
+  border: red solid 4px;
+}
+
 footer {
   background-color: yellow;
   height: var(--footer-height); /* Use the footer height variable */
