@@ -20,62 +20,11 @@ import { setupIonicReact } from '@ionic/react';
 setupIonicReact();
 import './App.css';
 
-import {
-  Outlet,
-  RouterProvider,
-  createRouter,
-  createRoute,
-  createRootRoute,
-} from '@tanstack/react-router';
-import { TanStackRouterDevtools } from '@tanstack/router-devtools';
-import Dice from './components/Dice.tsx';
+import { RouterProvider, createRouter } from '@tanstack/react-router';
+
 import { StrictMode } from 'react';
-import Footer from './common/Footer.tsx';
-import Header from './common/Header.tsx';
 
-const rootRoute = createRootRoute({
-  component: () => (
-    <div
-      style={{
-        margin: '0 1rem 0 1rem',
-        paddingTop: 'env(safe-area-inset-top)',
-      }}
-    >
-      <Header />
-      <Outlet />
-      <Footer />
-
-      <TanStackRouterDevtools />
-    </div>
-  ),
-});
-
-const indexRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/',
-  component: function Index() {
-    return (
-      <div className="p-2">
-        <h3>Welcome Home</h3>
-        Home component wil come here
-      </div>
-    );
-  },
-});
-
-const diceRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/dice',
-  component: function About() {
-    return (
-      <>
-        <Dice />
-      </>
-    );
-  },
-});
-
-const routeTree = rootRoute.addChildren([indexRoute, diceRoute]);
+import { routeTree } from './routeTree.gen.ts';
 
 const router = createRouter({ routeTree });
 

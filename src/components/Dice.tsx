@@ -4,11 +4,8 @@ import {
   IonCard,
   IonCardContent,
   IonCardHeader,
-  IonBadge,
-  IonLabel,
   IonIcon,
   IonImg,
-  IonList,
   IonAlert,
   IonItem,
   IonChip,
@@ -16,13 +13,14 @@ import {
 } from '@ionic/react';
 import './Dice.css';
 import { arrowForwardOutline } from 'ionicons/icons';
-import useFromNow from '../hooks/useFromNow';
 
 useDiceRoller;
 
 const Dice = () => {
-  const timeFromNow = useFromNow();
   const { values, spin, message, spinCount, totals } = useDiceRoller();
+
+  console.log(totals);
+
   // Define an array of animation classes
   const animations = [
     'bounce',
@@ -36,31 +34,24 @@ const Dice = () => {
   return (
     <div className="wrapper">
       <IonCard>
-        <IonCardHeader>
-          <IonCardContent>
-            {totals.length === 0 ? null : (
+        {totals.length === 0 ? null : (
+          <IonCardHeader>
+            <IonCardContent>
               <>
                 <IonButton id="present-alert">Show Spin Stats</IonButton>
                 <IonAlert
                   trigger="present-alert"
                   header="Stats"
                   subHeader="All the spins for this session"
-                  message={values
+                  message={totals
                     .map((total, index) => `S{${index + 1}}=${total}`)
                     .join(', ')}
                   buttons={['Close']}
                 ></IonAlert>
               </>
-            )}
-
-            <IonList>
-              <IonItem>
-                <IonLabel>Session Started</IonLabel>
-                <IonBadge>{timeFromNow}</IonBadge>
-              </IonItem>
-            </IonList>
-          </IonCardContent>
-        </IonCardHeader>
+            </IonCardContent>
+          </IonCardHeader>
+        )}
       </IonCard>
       {totals.length === 0 ? null : (
         <>

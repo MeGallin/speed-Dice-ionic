@@ -4,7 +4,6 @@ const header = () => {
   return (
     <header>
       <MenuComponent />
-      header
     </header>
   );
 };

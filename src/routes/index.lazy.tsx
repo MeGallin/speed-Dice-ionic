@@ -1,13 +1,9 @@
 import { createLazyFileRoute } from '@tanstack/react-router';
 
 export const Route = createLazyFileRoute('/')({
-  component: Index,
+  component: () => (
+    <>
+      <h1>Home page</h1>
+    </>
+  ),
 });
-
-function Index() {
-  return (
-    <div className="">
-      <h3>Welcome Home!</h3>
-    </div>
-  );
-}
