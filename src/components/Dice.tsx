@@ -31,26 +31,20 @@ const Dice = () => {
 
   return (
     <div className="wrapper">
-      <IonCard>
-        {totals.length === 0 ? null : (
-          <IonCardHeader>
-            <IonCardContent>
-              <>
-                <IonButton id="present-alert">Show Spin Stats</IonButton>
-                <IonAlert
-                  trigger="present-alert"
-                  header="Stats"
-                  subHeader="All the spins for this session"
-                  message={totals
-                    .map((total, index) => `S{${index + 1}}=${total}`)
-                    .join(', ')}
-                  buttons={['Close']}
-                ></IonAlert>
-              </>
-            </IonCardContent>
-          </IonCardHeader>
-        )}
-      </IonCard>
+      {totals.length === 0 ? null : (
+        <>
+          <IonButton id="present-alert">Show Spin Stats</IonButton>
+          <IonAlert
+            trigger="present-alert"
+            header="Stats"
+            subHeader="All the spins for this session"
+            message={totals
+              .map((total, index) => `S{${index + 1}}=${total}`)
+              .join(', ')}
+            buttons={['Close']}
+          ></IonAlert>
+        </>
+      )}
 
       {values.length === 0 || totals.length === 0 ? null : (
         <>
