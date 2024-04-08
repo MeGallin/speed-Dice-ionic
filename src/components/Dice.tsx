@@ -17,9 +17,7 @@ import { arrowForwardOutline } from 'ionicons/icons';
 useDiceRoller;
 
 const Dice = () => {
-  const { values, spin, message, spinCount, totals } = useDiceRoller();
-
-  console.log(totals);
+  const { values, spin, message, countSpin, totals } = useDiceRoller();
 
   // Define an array of animation classes
   const animations = [
@@ -53,7 +51,8 @@ const Dice = () => {
           </IonCardHeader>
         )}
       </IonCard>
-      {totals.length === 0 ? null : (
+
+      {values.length === 0 || totals.length === 0 ? null : (
         <>
           <IonCard>
             <IonCardHeader>
@@ -102,7 +101,7 @@ const Dice = () => {
       )}
 
       <IonChip outline={true} color="light">
-        Spin Counter: {spinCount}
+        Spin Counter: {countSpin}
       </IonChip>
       <IonButton
         expand="block"

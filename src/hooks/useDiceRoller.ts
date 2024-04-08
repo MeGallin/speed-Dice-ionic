@@ -1,20 +1,19 @@
 import { useState } from 'react';
+import { spinCount, totalsArray, displayValues } from '../state/dice';
+import { useAtom } from 'jotai';
+
 const rollDice = () => Math.floor(Math.random() * 6) + 1;
 
-export const useDiceRoller = (initialValue: number | null = null) => {
-  const [values, setValues] = useState<Array<number | null>>([
-    initialValue,
-    initialValue,
-    initialValue,
-  ]);
+export const useDiceRoller = () => {
+  const [values, setValues] = useAtom(displayValues);
   const [message, setMessage] = useState<string>(
     'Please pass the dice to the next person',
   );
-  const [spinCount, setSpinCount] = useState<number>(0); // State for counting spins
-  const [totals, setTotals] = useState<Array<number>>([]); // State for storing totals of each spin
+  const [countSpin, setCountSpin] = useAtom(spinCount);
+  const [totals, setTotals] = useAtom(totalsArray);
 
   const spin = () => {
-    setSpinCount(spinCount + 1);
+    setCountSpin(countSpin + 1);
     const newValues = values.map(() => rollDice());
     setValues(newValues);
 
@@ -47,5 +46,5 @@ export const useDiceRoller = (initialValue: number | null = null) => {
     setTotals([...totals, total]); // Add the new total to the totals array
   };
 
-  return { values, spin, message, spinCount, totals };
+  return { values, spin, message, countSpin, totals };
 };
